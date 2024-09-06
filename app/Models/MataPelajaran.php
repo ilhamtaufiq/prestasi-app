@@ -13,15 +13,7 @@ class MataPelajaran extends Model
 
     protected $fillable = [
 
-        'pai',
-        'pkn',
-        'indo',
-        'mtk',
-        'ipa',
-        'ips',
-        'pjok',
-        'senbud',
-        'sunda',
+        'nama_mapel'
     ];
 
 // /**

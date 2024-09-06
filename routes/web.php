@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkademikController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\NonAkademikController;
@@ -72,6 +73,13 @@ Route::middleware('auth')->group(function () {
         $nilai = $rapot->sum('nilai_pengetahuan') + $rapot->sum('nilai_keterampilan');
         return response()->json($nilai);
     });
+
+    route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
+    route::post('/mapel/store', [MapelController::class, 'store'])->name('mapel.store');
+    Route::delete('/mapel/{id}', [MapelController::class, 'destroy'])->name('mapel.destroy');
+    Route::match(['put', 'patch'], '/mapel/{id}', [MapelController::class, 'update'])->name('mapel.update');
+
+
     // Route::match(['put', 'patch'], '/rapot/{id}', [RapotController::class, 'update'])->name('rapot.update');
     // Route::delete('/rapot/{id}', [RapotController::class, 'destroy'])->name('rapot.destroy');
 
